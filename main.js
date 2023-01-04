@@ -7,7 +7,7 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
-const airconstat = require("./lib/AirconStat.js");
+const AirconStatClass = require("./lib/AirconStat.js");
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
@@ -27,8 +27,9 @@ class WosoMitsuAirconRac extends utils.Adapter {
         // this.on("objectChange", this.onObjectChange.bind(this));
         // this.on("message", this.onMessage.bind(this));
         this.on("unload", this.onUnload.bind(this));
-        this.log.info("startup");
-        this.log.info(airconstat);
+        let this.AirconStat = new AirconStatClass();
+        console.log("startup");
+        console.log(this.AirconStat);
     }
 
     /**
