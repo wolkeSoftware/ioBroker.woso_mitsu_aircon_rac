@@ -18,7 +18,6 @@ class WosoMitsuAirconRac extends utils.Adapter {
      * @param {Partial<utils.AdapterOptions>} [options={}]
      */
     constructor(options) {
-    		this.log.info("woso constr ");this.log.info(options);
         super({
             ...options,
             name: "woso_mitsu_aircon_rac",
@@ -28,6 +27,8 @@ class WosoMitsuAirconRac extends utils.Adapter {
         // this.on("objectChange", this.onObjectChange.bind(this));
         // this.on("message", this.onMessage.bind(this));
         this.on("unload", this.onUnload.bind(this));
+        this.log.info('startup');
+        this.log.info(airconstat);
     }
 
     /**
