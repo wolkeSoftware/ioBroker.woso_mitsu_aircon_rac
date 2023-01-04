@@ -1,0 +1,46 @@
+{
+    "expert": "yes",
+    "cli": false,
+    "adapterName": "woso_mitsu_aircon_rac",
+    "title": "Mitsubishi Aircon with RAC-WiFi-Modules",
+    "description": "Mitsubishi Aircon Adapter for RAC-WiFi-Modules",
+    "keywords": [
+        "Mitsubishi Aircon"
+    ],
+    "features": [
+        "adapter"
+    ],
+    "adminFeatures": [],
+    "type": "climate-control",
+    "startMode": "daemon",
+    "connectionType": "local",
+    "dataSource": "poll",
+    "connectionIndicator": "yes",
+    "adapterSettings": [
+        {
+            "key": "ip",
+            "label": "IP-Address of the Aircon",
+            "inputType": "text",
+            "defaultValue": ""
+        }
+    ],
+    "language": "JavaScript",
+    "nodeVersion": "14",
+    "adminUi": "json",
+    "releaseScript": "yes",
+    "indentation": "Space (4)",
+    "quotes": "double",
+    "es6class": "yes",
+    "tools": [
+        "ESLint",
+        "type checking"
+    ],
+    "authorName": "wolkeSoftware",
+    "authorGithub": "wolkeSoftware",
+    "authorEmail": "wolkesoftware@gmail.com",
+    "gitRemoteProtocol": "HTTPS",
+    "license": "MIT License",
+    "dependabot": "no",
+    "target": "github",
+    "creatorVersion": "2.3.0"
+}

@@ -1,0 +1,11 @@
+{
+    "i18n": true,
+    "type": "panel",
+    "items": {
+        "ip": {
+            "type": "text",
+            "label": "IP-Address of the Aircon",
+            "newLine": true
+        }
+    }
+}

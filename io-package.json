@@ -1,0 +1,104 @@
+{
+    "common": {
+        "name": "woso_mitsu_aircon_rac",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "Mitsubishi Aircon with RAC-WiFi-Modules",
+        "titleLang": {
+            "en": "Mitsubishi Aircon with RAC-WiFi-Modules",
+            "de": "Mitsubishi Aircon with RAC-WiFi-Modules",
+            "ru": "Mitsubishi Aircon with RAC-WiFi-Modules",
+            "pt": "Mitsubishi Aircon with RAC-WiFi-Modules",
+            "nl": "Mitsubishi Aircon with RAC-WiFi-Modules",
+            "fr": "Mitsubishi Aircon with RAC-WiFi-Modules",
+            "it": "Mitsubishi Aircon with RAC-WiFi-Modules",
+            "es": "Mitsubishi Aircon with RAC-WiFi-Modules",
+            "pl": "Mitsubishi Aircon with RAC-WiFi-Modules",
+            "zh-cn": "Mitsubishi Aircon with RAC-WiFi-Modules"
+        },
+        "desc": {
+            "en": "Mitsubishi Aircon Adapter for RAC-WiFi-Modules",
+            "de": "Mitsubishi Aircon Adapter for RAC-WiFi-Modules",
+            "ru": "Mitsubishi Aircon Adapter for RAC-WiFi-Modules",
+            "pt": "Mitsubishi Aircon Adapter for RAC-WiFi-Modules",
+            "nl": "Mitsubishi Aircon Adapter for RAC-WiFi-Modules",
+            "fr": "Mitsubishi Aircon Adapter for RAC-WiFi-Modules",
+            "it": "Mitsubishi Aircon Adapter for RAC-WiFi-Modules",
+            "es": "Mitsubishi Aircon Adapter for RAC-WiFi-Modules",
+            "pl": "Mitsubishi Aircon Adapter for RAC-WiFi-Modules",
+            "zh-cn": "Mitsubishi Aircon Adapter for RAC-WiFi-Modules"
+        },
+        "authors": [
+            "wolkeSoftware <wolkesoftware@gmail.com>"
+        ],
+        "keywords": [
+            "Mitsubishi Aircon"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "woso_mitsu_aircon_rac.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/wolkeSoftware/ioBroker.woso_mitsu_aircon_rac/main/admin/woso_mitsu_aircon_rac.png",
+        "readme": "https://github.com/wolkeSoftware/ioBroker.woso_mitsu_aircon_rac/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "climate-control",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.1.13"
+            }
+        ]
+    },
+    "native": {
+        "ip": ""
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
+}
