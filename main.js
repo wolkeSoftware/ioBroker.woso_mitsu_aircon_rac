@@ -380,7 +380,10 @@ class WosoMitsuAirconRac extends utils.Adapter {
     }
 
     async getDataFromAircon() {
-        this.log.info("next Timer");
+        if (this.AirconId!="") {
+            await this.getDataFromMitsu();
+            await this.setIOBStates();
+        }
     }
 
     /**
