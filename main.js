@@ -17,8 +17,8 @@ const KEY_AIRCON_STAT = "airconStat";
 
 const OPERATORID = "d2bc4571-1cea-4858-b0f2-34c18bef1901";
 const TIMEZONE = "Europe/Berlin";
-const ARCO_PORT = 51443;
-const ARCO_DEVICEID = "18547566-315b-4941-bb9b-90cedef4bbb7";
+const AIRCON_PORT = 51443;
+const AIRCON_DEVICEID = "18547566-315b-4941-bb9b-90cedef4bbb7";
 
 const COMMAND_DELETE_ACCOUNT_INFO = "deleteAccountInfo";
 const COMMAND_GET_DEVICE_INFO = "getDeviceInfo";
@@ -82,6 +82,10 @@ class WosoMitsuAirconRac extends utils.Adapter {
 
         await this.register_airco();
 
+        if (this.AirconId!="") {
+            this.setState("info.connection", true, true);
+        }
+
         await this.getDataFromMitsu();
 
         await this.setIOBStates();
@@ -123,23 +127,23 @@ class WosoMitsuAirconRac extends utils.Adapter {
     }
 
     async setIOBStates() {
-        await this.setStateAsync("inOperation", this.AirconStat.operation);
-        await this.setStateAsync("OperationMode", this.AirconStat.operationMode);
-        await this.setStateAsync("Airflow", this.AirconStat.airFlow);
-        await this.setStateAsync("ModelNo", this.AirconStat.modelNo);
-        await this.setStateAsync("Indoor-Temp", this.AirconStat.indoorTemp);
-        await this.setStateAsync("Outdoor-Temp", this.AirconStat.outdoorTemp);
-        await this.setStateAsync("Preset-Temp", this.AirconStat.presetTemp);
-        await this.setStateAsync("Winddirection LR", this.AirconStat.windDirectionLR);
-        await this.setStateAsync("Winddirection UD", this.AirconStat.windDirectionUD);
-        await this.setStateAsync("Auto-Heating", this.AirconStat.isAutoHeating);
-        await this.setStateAsync("Cool-Hot-Judge", this.AirconStat.coolHotJudge);
-        await this.setStateAsync("Electric", this.AirconStat.electric);
-        await this.setStateAsync("Entrust", this.AirconStat.entrust);
-        await this.setStateAsync("Error-Code", this.AirconStat.errorCode);
-        await this.setStateAsync("Self-Clean-Operation", this.AirconStat.isSelfCleanOperation);
-        await this.setStateAsync("Self-Clean-Reset", this.AirconStat.isSelfCleanReset);
-        await this.setStateAsync("Vacant", this.AirconStat.isVacantProperty);
+        await this.setStateAsync("inOperation", this.AirconStat.operation, true);
+        await this.setStateAsync("OperationMode", this.AirconStat.operationMode, true);
+        await this.setStateAsync("Airflow", this.AirconStat.airFlow, true);
+        await this.setStateAsync("ModelNo", ""+this.AirconStat.modelNo, true);
+        await this.setStateAsync("Indoor-Temp", this.AirconStat.indoorTemp, true);
+        await this.setStateAsync("Outdoor-Temp", this.AirconStat.outdoorTemp, true);
+        await this.setStateAsync("Preset-Temp", this.AirconStat.presetTemp, true);
+        await this.setStateAsync("Winddirection LR", this.AirconStat.windDirectionLR, true);
+        await this.setStateAsync("Winddirection UD", this.AirconStat.windDirectionUD, true);
+        await this.setStateAsync("Auto-Heating", this.AirconStat.isAutoHeating, true);
+        await this.setStateAsync("Cool-Hot-Judge", this.AirconStat.coolHotJudge, true);
+        await this.setStateAsync("Electric", this.AirconStat.electric, true);
+        await this.setStateAsync("Entrust", this.AirconStat.entrust, true);
+        await this.setStateAsync("Error-Code", this.AirconStat.errorCode, true);
+        await this.setStateAsync("Self-Clean-Operation", this.AirconStat.isSelfCleanOperation, true);
+        await this.setStateAsync("Self-Clean-Reset", this.AirconStat.isSelfCleanReset, true);
+        await this.setStateAsync("Vacant", this.AirconStat.isVacantProperty, true);
     }
 
     async initIOBStates() {
@@ -450,13 +454,13 @@ class WosoMitsuAirconRac extends utils.Adapter {
     ////Data-Transfer-Functions
 
 
-    async _post(port, cmd, contents) {
+    async _post(cmd, contents) {
         await delay(2050);
-        const url = "http://"+this.config.ip+":"+ARCO_PORT+"/beaver/command/"+cmd;
+        const url = "http://"+this.config.ip+":"+AIRCON_PORT+"/beaver/command/"+cmd;
         const data = {
             "apiVer": "1.0",
             "command": cmd,
-            "deviceId": ARCO_DEVICEID,
+            "deviceId": AIRCON_DEVICEID,
             "operatorId": OPERATORID,
             "timestamp": Date.now(),
         };
@@ -511,7 +515,7 @@ class WosoMitsuAirconRac extends utils.Adapter {
         let ret = {};
         ret.error=-1;
         //    var options = {KEY_AIRCON_ID: airco_id, "autoHeating" : 0, "ledStat" : 0,  "airconStat": command};
-        const options = { KEY_AIRCON_ID: ARCO_DEVICEID, KEY_AIRCON_STAT: command};
+        const options = { KEY_AIRCON_ID: AIRCON_DEVICEID, KEY_AIRCON_STAT: command};
 
 
         try {
@@ -530,7 +534,7 @@ class WosoMitsuAirconRac extends utils.Adapter {
             "accountId": OPERATORID,
             "remote": 0,
             "timezone": time_zone,
-            KEY_AIRCON_ID: ARCO_DEVICEID
+            KEY_AIRCON_ID: AIRCON_DEVICEID
         };
         return await this._post(COMMAND_UPDATE_ACCOUNT_INFO, contents);
     }
@@ -541,7 +545,7 @@ class WosoMitsuAirconRac extends utils.Adapter {
         //Update the account info on the airco (sets to operator id of the device)
         const contents = {
             "accountId": OPERATORID,
-            KEY_AIRCON_ID: ARCO_DEVICEID
+            KEY_AIRCON_ID: AIRCON_DEVICEID
         };
         return await this._post(COMMAND_DELETE_ACCOUNT_INFO, contents);
     }
@@ -556,12 +560,17 @@ class WosoMitsuAirconRac extends utils.Adapter {
     }
 
     async register_airco() {
-        //this.log.info("regData:"+JSON.stringify(AirconItem));
-        this.lastAirconData = await this.getInfoFromMitsu();
-        this.AirconId = this.lastAirconData.airconId;
-        //this.log.info("regData:"+JSON.stringify(AirconItem.airconData));
-        //var res = await delete_account_info(AirconItem.airconData.airconId);exit();
-        await this.update_account_info(this.AirconId, TIMEZONE);
+        try {
+            //this.log.info("regData:"+JSON.stringify(AirconItem));
+            this.lastAirconData = await this.getInfoFromMitsu();
+            this.AirconId = this.lastAirconData.airconId;
+            //this.log.info("regData:"+JSON.stringify(AirconItem.airconData));
+            //var res = await delete_account_info(AirconItem.airconData.airconId);exit();
+            await this.update_account_info(this.AirconId, TIMEZONE);
+        } catch(e) {
+            this.log.error(e);
+            this.log.info(JSON.stringify(this.lastAirconData));
+        }
         //this.log.info("regres:"+res.response.result);
 
         /*
@@ -578,11 +587,11 @@ class WosoMitsuAirconRac extends utils.Adapter {
         let ret = {};
         ret.error="-1";
         const contents = {
-            KEY_AIRCON_ID: ARCO_DEVICEID
+            KEY_AIRCON_ID: AIRCON_DEVICEID
         };
         try {
             ret = await this._post(COMMAND_GET_AIRCON_STAT, contents);
-            this.acCoder.fromBase64(this.AirconStat, ret.contents.airconStat);
+            this.acCoder.fromBase64(this.AirconStat, ret.response.contents.airconStat);
         } catch (error) {
             this.log.error(`Could not get Data: ${error}`);
             ret.error=error;
