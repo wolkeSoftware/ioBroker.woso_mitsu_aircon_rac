@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "woso_mitsu_aircon_rac",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "news": {
             "0.0.1": {
                 "en": "initial release",
@@ -75,7 +75,8 @@
         ]
     },
     "native": {
-        "ip": ""
+        "ip": "",
+        "timer": 0
     },
     "objects": [],
     "instanceObjects": [

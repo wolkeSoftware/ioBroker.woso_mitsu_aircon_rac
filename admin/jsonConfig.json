@@ -6,6 +6,12 @@
             "type": "text",
             "label": "IP-Address of the Aircon",
             "newLine": true
+        },
+        "timer": {
+            "type": "number",
+            "label": "Time in s to retrieve data from the aircon",
+            "newLine": true
         }
+
     }
 }

@@ -22,6 +22,12 @@
             "label": "IP-Address of the Aircon",
             "inputType": "text",
             "defaultValue": ""
+        },
+        {
+            "key": "timer",
+            "label": "Time in s to retrieve data from the aircon",
+            "inputType": "number",
+            "defaultValue": 0
         }
     ],
     "language": "JavaScript",

@@ -1,4 +1,5 @@
 {
     "woso_mitsu_aircon_rac adapter settings": "Adaptereinstellungen für woso_mitsu_aircon_rac",
-    "ip": "IP-Address of the Aircon"
+    "ip": "IP-Address of the Aircon",
+    "timer": "Time in s to retrieve data from the aircon"
 }

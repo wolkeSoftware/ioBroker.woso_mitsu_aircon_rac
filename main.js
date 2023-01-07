@@ -77,6 +77,7 @@ class WosoMitsuAirconRac extends utils.Adapter {
         // The adapters config (in the instance object everything under the attribute "native") is accessible via
         // this.config:
         this.log.info("woso::config ip: " + this.config.ip);
+        this.log.info("woso::config timer: " + this.config.timer);
 
         await this.initIOBStates();
 
