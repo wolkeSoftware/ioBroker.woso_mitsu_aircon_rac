@@ -1,5 +1,5 @@
 {
     "woso_mitsu_aircon_rac adapter settings": "woso_mitsu_aircon_rac的适配器设置",
     "ip": "IP-Address of the Aircon",
-    "timer": "Time in s to retrieve data from the aircon"
+    "timer": "Time in min to retrieve data from the aircon"
 }

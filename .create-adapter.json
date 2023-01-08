@@ -25,7 +25,7 @@
         },
         {
             "key": "timer",
-            "label": "Time in s to retrieve data from the aircon",
+            "label": "Time in min to retrieve data from the aircon",
             "inputType": "number",
             "defaultValue": 0
         }
