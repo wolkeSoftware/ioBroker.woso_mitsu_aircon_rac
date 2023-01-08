@@ -131,16 +131,40 @@ class WosoMitsuAirconRac extends utils.Adapter {
 
     async setStateVal(id, val) {
         let valchange=0;
-        switch (id) {
-            case "inOperation" : this.AirconStat.operation = val; valchange++; break;
-            case "OperationMode" : this.AirconStat.operationMode = val; valchange++; break;
-            case "Airflow" : this.AirconStat.airFlow = val; valchange++; break;
-            case "Preset-Temp" : this.AirconStat.presetTemp = val; valchange++; break;
-            case "Winddirection LR" : this.AirconStat.windDirectionLR = val; valchange++; break;
-            case "Winddirection UD" : this.AirconStat.windDirectionUD = val; valchange++; break;
+        let idS = "";
+        const h = id.split(".");
+        if (h.length == 3) {
+            idS = h[2];
+        }
+        switch (idS) {
+            case "inOperation" :
+                this.AirconStat.operation = val;
+                valchange++;
+                break;
+            case "OperationMode" :
+                this.AirconStat.operationMode = val;
+                valchange++;
+                break;
+            case "Airflow" :
+                this.AirconStat.airFlow = val;
+                valchange++;
+                break;
+            case "Preset-Temp" :
+                this.AirconStat.presetTemp = val;
+                valchange++;
+                break;
+            case "Winddirection LR" :
+                this.AirconStat.windDirectionLR = val;
+                valchange++;
+                break;
+            case "Winddirection UD" :
+                this.AirconStat.windDirectionUD = val;
+                valchange++;
+                break;
         }
         if (valchange > 0) {
             await this.sendDataToMitsu();
+            this.setIOBStates();
         }
     }
 
@@ -534,24 +558,6 @@ class WosoMitsuAirconRac extends utils.Adapter {
         return ret;
     }
 
-
-    async sendDataToMitsu(airco_id, command) {
-        let ret = {};
-        ret.error=-1;
-        //    var options = {KEY_AIRCON_ID: airco_id, "autoHeating" : 0, "ledStat" : 0,  "airconStat": command};
-        const options = { KEY_AIRCON_ID: AIRCON_DEVICEID, KEY_AIRCON_STAT: command};
-
-
-        try {
-            ret = await this._post(COMMAND_SET_AIRCON_STAT, options);
-        } catch (error) {
-            this.log.error(`Could not get Data: ${error}`);
-        }
-
-        return ret;
-    }
-
-
     async update_account_info(airco_id, time_zone) {
         //Update the account info on the airco (sets to operator id of the device)
         const contents = {
@@ -623,7 +629,7 @@ class WosoMitsuAirconRac extends utils.Adapter {
         return ret;
     }
 
-    async setDataToMitsu() {
+    async sendDataToMitsu() {
         let ret = {};
         ret.error="-1";
         const command = this.acCoder.toBase64(this.AirconStat);
