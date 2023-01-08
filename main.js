@@ -128,23 +128,23 @@ class WosoMitsuAirconRac extends utils.Adapter {
     }
 
     async setIOBStates() {
-        await this.setStateAsync("inOperation", this.AirconStat.operation, true);
-        await this.setStateAsync("OperationMode", this.AirconStat.operationMode, true);
-        await this.setStateAsync("Airflow", this.AirconStat.airFlow, true);
-        await this.setStateAsync("ModelNo", ""+this.AirconStat.modelNo, true);
-        await this.setStateAsync("Indoor-Temp", this.AirconStat.indoorTemp, true);
-        await this.setStateAsync("Outdoor-Temp", this.AirconStat.outdoorTemp, true);
-        await this.setStateAsync("Preset-Temp", this.AirconStat.presetTemp, true);
-        await this.setStateAsync("Winddirection LR", this.AirconStat.windDirectionLR, true);
-        await this.setStateAsync("Winddirection UD", this.AirconStat.windDirectionUD, true);
-        await this.setStateAsync("Auto-Heating", this.AirconStat.isAutoHeating, true);
-        await this.setStateAsync("Cool-Hot-Judge", this.AirconStat.coolHotJudge, true);
-        await this.setStateAsync("Electric", this.AirconStat.electric, true);
-        await this.setStateAsync("Entrust", this.AirconStat.entrust, true);
-        await this.setStateAsync("Error-Code", this.AirconStat.errorCode, true);
-        await this.setStateAsync("Self-Clean-Operation", this.AirconStat.isSelfCleanOperation, true);
-        await this.setStateAsync("Self-Clean-Reset", this.AirconStat.isSelfCleanReset, true);
-        await this.setStateAsync("Vacant", this.AirconStat.isVacantProperty, true);
+        await this.setStateAsync("inOperation", this.AirconStat.operation, false);
+        await this.setStateAsync("OperationMode", this.AirconStat.operationMode, false);
+        await this.setStateAsync("Airflow", this.AirconStat.airFlow, false);
+        await this.setStateAsync("ModelNo", ""+this.AirconStat.modelNo, false);
+        await this.setStateAsync("Indoor-Temp", this.AirconStat.indoorTemp, false);
+        await this.setStateAsync("Outdoor-Temp", this.AirconStat.outdoorTemp, false);
+        await this.setStateAsync("Preset-Temp", this.AirconStat.presetTemp, false);
+        await this.setStateAsync("Winddirection LR", this.AirconStat.windDirectionLR, false);
+        await this.setStateAsync("Winddirection UD", this.AirconStat.windDirectionUD, false);
+        await this.setStateAsync("Auto-Heating", this.AirconStat.isAutoHeating, false);
+        await this.setStateAsync("Cool-Hot-Judge", this.AirconStat.coolHotJudge, false);
+        await this.setStateAsync("Electric", this.AirconStat.electric, false);
+        await this.setStateAsync("Entrust", this.AirconStat.entrust, false);
+        await this.setStateAsync("Error-Code", this.AirconStat.errorCode, false);
+        await this.setStateAsync("Self-Clean-Operation", this.AirconStat.isSelfCleanOperation, false);
+        await this.setStateAsync("Self-Clean-Reset", this.AirconStat.isSelfCleanReset, false);
+        await this.setStateAsync("Vacant", this.AirconStat.isVacantProperty, false);
     }
 
     async initIOBStates() {
@@ -372,7 +372,7 @@ class WosoMitsuAirconRac extends utils.Adapter {
     }
 
     startTimer() {
-        this.timer = setTimeout(() =>this.startTimerAction(), 60000);
+        this.timer = setTimeout(() =>this.startTimerAction(), (this.config.timer * 60000));
     }
 
     async startTimerAction() {
