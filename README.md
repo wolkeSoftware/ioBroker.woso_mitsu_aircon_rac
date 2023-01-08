@@ -14,7 +14,9 @@
 
 Mitsubishi Aircon Adapter for RAC-WiFi-Modules. 
 
-Right now you can get the Information from the Aircon, the function to send Data is already implemented, but there seems to be an error, that I can't find.
+This Adapter will give you the opportunity to connect to a localy (WiFi) installed Aircon of Mitsubishi Heavy with an RAC-WiFi-Module.
+
+Right now you can get the Information from the Aircon, the function to send Data is already implemented, but there seems to be an error, that I can't find, so the function will be executed, but the data is not set properyly.
 
 
 ## Developer manual
@@ -26,6 +28,10 @@ Thank you very much for your work - It really helped me a lot.
 
 The current code needs a little clean up, but for the first try it should work as a base to get the Informatione and maybe someone finds the error in sending the data?
 Feel free to fix or add some functions.
+
+There are some more things to do - the integration is based on a fixed key for the device and operator. 
+Additional functions are already set up, but not integrated right now (de-register the app from the aircon on unload the module ...)
+
 
 ### DISCLAIMER
 
