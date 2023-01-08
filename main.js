@@ -124,27 +124,44 @@ class WosoMitsuAirconRac extends utils.Adapter {
         //this.log.info("check group user admin group admin: " + result);
 
         //get data from aircon and start timer
-        this.startTimerAction();
+        if (this.config.timer > 0) {
+            this.startTimerAction();
+        }
+    }
+
+    async setStateVal(id, val) {
+        let valchange=0;
+        switch (id) {
+            case "inOperation" : this.AirconStat.operation = val; valchange++; break;
+            case "OperationMode" : this.AirconStat.operationMode = val; valchange++; break;
+            case "Airflow" : this.AirconStat.airFlow = val; valchange++; break;
+            case "Preset-Temp" : this.AirconStat.presetTemp = val; valchange++; break;
+            case "Winddirection LR" : this.AirconStat.windDirectionLR = val; valchange++; break;
+            case "Winddirection UD" : this.AirconStat.windDirectionUD = val; valchange++; break;
+        }
+        if (valchange > 0) {
+            await this.sendDataToMitsu();
+        }
     }
 
     async setIOBStates() {
-        await this.setStateAsync("inOperation", this.AirconStat.operation, false);
-        await this.setStateAsync("OperationMode", this.AirconStat.operationMode, false);
-        await this.setStateAsync("Airflow", this.AirconStat.airFlow, false);
-        await this.setStateAsync("ModelNo", ""+this.AirconStat.modelNo, false);
-        await this.setStateAsync("Indoor-Temp", this.AirconStat.indoorTemp, false);
-        await this.setStateAsync("Outdoor-Temp", this.AirconStat.outdoorTemp, false);
-        await this.setStateAsync("Preset-Temp", this.AirconStat.presetTemp, false);
-        await this.setStateAsync("Winddirection LR", this.AirconStat.windDirectionLR, false);
-        await this.setStateAsync("Winddirection UD", this.AirconStat.windDirectionUD, false);
-        await this.setStateAsync("Auto-Heating", this.AirconStat.isAutoHeating, false);
-        await this.setStateAsync("Cool-Hot-Judge", this.AirconStat.coolHotJudge, false);
-        await this.setStateAsync("Electric", this.AirconStat.electric, false);
-        await this.setStateAsync("Entrust", this.AirconStat.entrust, false);
-        await this.setStateAsync("Error-Code", this.AirconStat.errorCode, false);
-        await this.setStateAsync("Self-Clean-Operation", this.AirconStat.isSelfCleanOperation, false);
-        await this.setStateAsync("Self-Clean-Reset", this.AirconStat.isSelfCleanReset, false);
-        await this.setStateAsync("Vacant", this.AirconStat.isVacantProperty, false);
+        await this.setStateAsync("inOperation", this.AirconStat.operation, true);
+        await this.setStateAsync("OperationMode", this.AirconStat.operationMode, true);
+        await this.setStateAsync("Airflow", this.AirconStat.airFlow, true);
+        await this.setStateAsync("ModelNo", ""+this.AirconStat.modelNo, true);
+        await this.setStateAsync("Indoor-Temp", this.AirconStat.indoorTemp, true);
+        await this.setStateAsync("Outdoor-Temp", this.AirconStat.outdoorTemp, true);
+        await this.setStateAsync("Preset-Temp", this.AirconStat.presetTemp, true);
+        await this.setStateAsync("Winddirection LR", this.AirconStat.windDirectionLR, true);
+        await this.setStateAsync("Winddirection UD", this.AirconStat.windDirectionUD, true);
+        await this.setStateAsync("Auto-Heating", this.AirconStat.isAutoHeating, true);
+        await this.setStateAsync("Cool-Hot-Judge", this.AirconStat.coolHotJudge, true);
+        await this.setStateAsync("Electric", this.AirconStat.electric, true);
+        await this.setStateAsync("Entrust", this.AirconStat.entrust, true);
+        await this.setStateAsync("Error-Code", this.AirconStat.errorCode, true);
+        await this.setStateAsync("Self-Clean-Operation", this.AirconStat.isSelfCleanOperation, true);
+        await this.setStateAsync("Self-Clean-Reset", this.AirconStat.isSelfCleanReset, true);
+        await this.setStateAsync("Vacant", this.AirconStat.isVacantProperty, true);
     }
 
     async initIOBStates() {
@@ -430,7 +447,10 @@ class WosoMitsuAirconRac extends utils.Adapter {
     onStateChange(id, state) {
         if (state) {
             // The state was changed
-            this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+            if (state.ack === false) {
+                this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+                this.setStateVal(id, state.val);
+            }
         } else {
             // The state was deleted
             this.log.info(`state ${id} deleted`);
@@ -595,6 +615,24 @@ class WosoMitsuAirconRac extends utils.Adapter {
         };
         try {
             ret = await this._post(COMMAND_GET_AIRCON_STAT, contents);
+            this.acCoder.fromBase64(this.AirconStat, ret.response.contents.airconStat);
+        } catch (error) {
+            this.log.error(`Could not get Data: ${error}`);
+            ret.error=error;
+        }
+        return ret;
+    }
+
+    async setDataToMitsu() {
+        let ret = {};
+        ret.error="-1";
+        const command = this.acCoder.toBase64(this.AirconStat);
+        const contents = {
+            KEY_AIRCON_ID: AIRCON_DEVICEID,
+            KEY_AIRCON_STAT: command
+        };
+        try {
+            ret = await this._post(COMMAND_SET_AIRCON_STAT, contents);
             this.acCoder.fromBase64(this.AirconStat, ret.response.contents.airconStat);
         } catch (error) {
             this.log.error(`Could not get Data: ${error}`);
