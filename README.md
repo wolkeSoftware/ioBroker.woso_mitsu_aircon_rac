@@ -12,10 +12,20 @@
 
 ## woso_mitsu_aircon_rac adapter for ioBroker
 
-Mitsubishi Aircon Adapter for RAC-WiFi-Modules
+Mitsubishi Aircon Adapter for RAC-WiFi-Modules. 
+
+Right now you can get the Information from the Aircon, the function to send Data is already implemented, but there seems to be an error, that I can't find.
+
 
 ## Developer manual
-This section is intended for the developer. It can be deleted later.
+This code is based on the original JAVA-implementation of the Android App and the already converted Python-Scripts here:
+https://github.com/jeatheak/Mitsubishi-WF-RAC-Integration
+https://github.com/mcheijink/WF-RAC
+
+Thank you very much for your work - It really helped me a lot.
+
+The current code needs a little clean up, but for the first try it should work as a base to get the Informatione and maybe someone finds the error in sending the data?
+Feel free to fix or add some functions.
 
 ### DISCLAIMER
 
