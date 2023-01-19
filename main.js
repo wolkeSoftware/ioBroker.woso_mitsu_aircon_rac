@@ -738,7 +738,7 @@ class WosoMitsuAirconRac extends utils.Adapter {
 
             //this.log.info("regData:"+JSON.stringify(AirconItem.airconData));
             //var res = await delete_account_info(AirconItem.airconData.airconId);exit();
-            const res = await this.update_account_info();
+            await this.update_account_info();
             //this.log.info("reg:"+JSON.stringify(res.response));
             /*
             if (res.response.result == 0) {
