@@ -69,7 +69,7 @@ class WosoMitsuAirconRac extends utils.Adapter {
         this.lastError = "";
         this.autoHeating = 0;
         this.ledStat = 0;
-        this.acCoder = new AirconCoderClass();
+        this.acCoder = new AirconCoderClass(this.log);
     }
 
     /**
@@ -85,6 +85,8 @@ class WosoMitsuAirconRac extends utils.Adapter {
         // this.config:
         this.log.info("woso::config ip: " + this.config.ip);
         this.log.info("woso::config timer: " + this.config.timer);
+
+        this.acCoder.setLogger(this.log);
 
         await this.initIOBStates();
 
@@ -641,12 +643,15 @@ class WosoMitsuAirconRac extends utils.Adapter {
     async _post(cmd, contents) {
         await delay(2050);
         const url = "http://"+this.config.ip+":"+AIRCON_PORT+"/beaver/command/"+cmd;
+        const millis = Date.now();
+        const t = Math.floor(millis / 1000);
+
         const data = {
             "apiVer": "1.0",
             "command": cmd,
             "deviceId": AIRCON_DEVICEID,
             "operatorId": OPERATORID,
-            "timestamp": Date.now(),
+            "timestamp": t,
         };
         if (contents != "") {
             data["contents"] = contents;
