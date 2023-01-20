@@ -230,6 +230,13 @@ class WosoMitsuAirconRac extends utils.Adapter {
                 role: "indicator",
                 read: true,
                 write: true,
+                "states": {
+                    0: "Auto",
+                    1: "Kühlen",
+                    2: "Heizen",
+                    3: "Lüften",
+                    4: "Entfeuchten"
+                }
             },
             native: {},
         });
@@ -243,6 +250,13 @@ class WosoMitsuAirconRac extends utils.Adapter {
                 role: "indicator",
                 read: true,
                 write: true,
+                states: {
+                    0: "auto",
+                    1: "min Airflow",
+                    2: "medium Airflow",
+                    3: "high Airflow",
+                    4: "max Airflow"
+                }
             },
             native: {},
         });
@@ -295,6 +309,9 @@ class WosoMitsuAirconRac extends utils.Adapter {
                 role: "indicator",
                 read: true,
                 write: true,
+                min: 18,
+                max: 30,
+                step: 0.5
             },
             native: {},
         });
@@ -308,6 +325,16 @@ class WosoMitsuAirconRac extends utils.Adapter {
                 role: "indicator",
                 read: true,
                 write: true,
+                "states": {
+                    0 : "auto",
+                    1 : "left",
+                    2 : "slightly left",
+                    3 : "middle",
+                    4 : "slightly right",
+                    5 : "right",
+                    6 : "wide",
+                    7 : "spot"
+                }
             },
             native: {},
         });
@@ -321,6 +348,13 @@ class WosoMitsuAirconRac extends utils.Adapter {
                 role: "indicator",
                 read: true,
                 write: true,
+                "states": {
+                    0 : "auto",
+                    1 : "higher",
+                    2 : "slightly higher",
+                    3 : "slightly lower",
+                    4 : "lower"
+                }
             },
             native: {},
         });
