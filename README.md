@@ -104,12 +104,8 @@ dev-server watch
 Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev-server#readme) for more details.
 
 ## Changelog
-<!--
-    Placeholder for the next version (at the beginning of the line):
-    ### **WORK IN PROGRESS**
--->
 
-### **WORK IN PROGRESS**
+### 1.0.1
 * (wolkeSoftware) initial release
 
 ## License
