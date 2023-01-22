@@ -1,0 +1,238 @@
+new::
+
+POST /beaver/command/getDeviceInfo HTTP/1.1
+Connection: close
+Content-Type: application/json; charset=utf-8
+Content-Length: 147
+Host: 192.168.178.62:51443
+Accept-Encoding: gzip
+User-Agent: okhttp/4.9.1
+
+{"apiVer":"1.0","command":"getDeviceInfo","deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317141}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 237
+
+{"command":"getDeviceInfo","apiVer":"1.0","deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317141,"result":0,"contents": {"airconId":"ec0bae9f2d1d","macAddress":"ec0bae9f2d1d","apMode":0}}
+
+
+new::
+
+POST /beaver/command/getDeviceInfo HTTP/1.1
+Connection: close
+Content-Type: application/json; charset=utf-8
+Content-Length: 147
+Host: 192.168.178.62:51443
+Accept-Encoding: gzip
+User-Agent: okhttp/4.9.1
+
+{"apiVer":"1.0","command":"getDeviceInfo","deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317143}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 237
+
+{"command":"getDeviceInfo","apiVer":"1.0","deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317143,"result":0,"contents": {"airconId":"ec0bae9f2d1d","macAddress":"ec0bae9f2d1d","apMode":0}}
+
+
+new::
+
+POST /beaver/command/getAirconStat HTTP/1.1
+Connection: close
+Content-Type: application/json; charset=utf-8
+Content-Length: 186
+Host: 192.168.178.62:51443
+Accept-Encoding: gzip
+User-Agent: okhttp/4.9.1
+
+{"apiVer":"1.0","command":"getAirconStat","contents":{"airconId":"ec0bae9f2d1d"},"deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317147}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 549
+
+{"command":"getAirconStat","apiVer":"1.0","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","deviceId":"e559fbf1879aaf4c","timestamp":1674317147,"result":0,"contents":{"airconId":"ec0bae9f2d1d","airconStat":"AACymKb/AAAAAAASCgAAAAAAAf////9geIAEEBAmjAAAiAAAAgAAAAAAAAOAIIz/gBBc/5QQDgCaXw==","logStat":0,"updatedBy":"local","expires":1674316060,"ledStat":1,"autoHeating":0,"highTemp":"AB","lowTemp":"66","firmType":"WF-RAC","wireless":{"firmVer":"010"},"mcu":{"firmVer":"123"},"timezone":"Europe/Berlin","remoteList":["","","",""],"numOfAccount":2}}
+
+
+new::
+
+POST /beaver/command/updateAccountInfo HTTP/1.1
+Connection: close
+Content-Type: application/json; charset=utf-8
+Content-Length: 279
+Host: 192.168.178.62:51443
+Accept-Encoding: gzip
+User-Agent: okhttp/4.9.1
+
+	
+{"apiVer":"1.0","command":"updateAccountInfo","contents":{"accountId":"9d005f5f-de8c-408e-b81a-99107a189c30","airconId":"ec0bae9f2d1d","remote":0,"timezone":"Europe/Berlin"},"deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317151}
+///own:::
+{"apiVer":"1.0","command":"updateAccountInfo","deviceId":"18547566-315b-4941-bb9b-90cedef4bbb7","operatorId":"d2bc4571-1cea-4858-b0f2-34c18bef1901","timestamp":1674317885,"contents":{"accountId":"d2bc4571-1cea-4858-b0f2-34c18bef1901","airconId":"ec0bae9f2d1d","remote":0,"timezone":"Europe/Berlin"}}
+//endown
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 162
+
+{"command":"updateAccountInfo","apiVer":"1.0","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","deviceId":"e559fbf1879aaf4c","timestamp":1674317151,"result":0}
+//own::
+///own:::
+{"command":"updateAccountInfo","apiVer":"1.0","operatorId":"d2bc4571-1cea-4858-b0f2-34c18bef1901","deviceId":"18547566-315b-4941-bb9b-90cedef4bbb7","timestamp":1674317885,"result":0}
+//endown
+
+new::
+
+POST /beaver/command/getAirconStat HTTP/1.1
+Connection: close
+Content-Type: application/json; charset=utf-8
+Content-Length: 186
+Host: 192.168.178.62:51443
+Accept-Encoding: gzip
+User-Agent: okhttp/4.9.1
+
+{"apiVer":"1.0","command":"getAirconStat","contents":{"airconId":"ec0bae9f2d1d"},"deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317156}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 549
+
+{"command":"getAirconStat","apiVer":"1.0","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","deviceId":"e559fbf1879aaf4c","timestamp":1674317156,"result":0,"contents":{"airconId":"ec0bae9f2d1d","airconStat":"AACymKb/AAAAAAASCgAAAAAAAf////9geIAEEBAmjAAAiAAAAgAAAAAAAAOAIIz/gBBc/5QQDgCaXw==","logStat":0,"updatedBy":"local","expires":1674316060,"ledStat":1,"autoHeating":0,"highTemp":"AB","lowTemp":"66","firmType":"WF-RAC","wireless":{"firmVer":"010"},"mcu":{"firmVer":"123"},"timezone":"Europe/Berlin","remoteList":["","","",""],"numOfAccount":2}}
+
+
+new::
+
+POST /beaver/command/getDeviceInfo HTTP/1.1
+Connection: close
+Content-Type: application/json; charset=utf-8
+Content-Length: 147
+Host: 192.168.178.62:51443
+Accept-Encoding: gzip
+User-Agent: okhttp/4.9.1
+
+{"apiVer":"1.0","command":"getDeviceInfo","deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317158}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 237
+
+{"command":"getDeviceInfo","apiVer":"1.0","deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317158,"result":0,"contents": {"airconId":"ec0bae9f2d1d","macAddress":"ec0bae9f2d1d","apMode":0}}
+
+
+new::
+
+POST /beaver/command/getAirconStat HTTP/1.1
+Connection: close
+Content-Type: application/json; charset=utf-8
+Content-Length: 186
+Host: 192.168.178.62:51443
+Accept-Encoding: gzip
+User-Agent: okhttp/4.9.1
+
+{"apiVer":"1.0","command":"getAirconStat","contents":{"airconId":"ec0bae9f2d1d"},"deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317164}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 549
+
+{"command":"getAirconStat","apiVer":"1.0","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","deviceId":"e559fbf1879aaf4c","timestamp":1674317164,"result":0,"contents":{"airconId":"ec0bae9f2d1d","airconStat":"AACymKb/AAAAAAASCgAAAAAAAf////9geIAEEBAmjAAAiAAAAgAAAAAAAAOAIIz/gBBc/5QQDgCaXw==","logStat":0,"updatedBy":"local","expires":1674316060,"ledStat":1,"autoHeating":0,"highTemp":"AB","lowTemp":"66","firmType":"WF-RAC","wireless":{"firmVer":"010"},"mcu":{"firmVer":"123"},"timezone":"Europe/Berlin","remoteList":["","","",""],"numOfAccount":2}}
+
+
+new::
+
+POST /beaver/command/setAirconStat HTTP/1.1
+Connection: close
+Content-Type: application/json; charset=utf-8
+Content-Length: 270
+Host: 192.168.178.62:51443
+Accept-Encoding: gzip
+User-Agent: okhttp/4.9.1
+
+{"apiVer":"1.0","command":"setAirconStat","contents":{"airconId":"ec0bae9f2d1d","airconStat":"AACymKf/AAAAAAASCgAAAAAAAf////9/pgAAEBAn/wAAAAAAAgAAAAAAAAH/////A1Y="},"deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317168}
+//statbytes:
+	0,0,-78,-104,-89,-1,0,0,0,0,0,18,10,0,0,0,0,0,1,-1,-1,-1,-1,127,-90,0,0,16,16,39,-1,0,0,0,0,0,2,0,0,0,0,0,0,1,-1,-1,-1,-1,3,86
+//endstatbytes
+//owndata::
+{"apiVer":"1.0","command":"setAirconStat","deviceId":"18547566-315b-4941-bb9b-90cedef4bbb7","operatorId":"d2bc4571-1cea-4858-b0f2-34c18bef1901","timestamp":1674318374,"contents":{"airconId":"ec0bae9f2d1d","airconStat":"AADDssKYwqjDvwAAAAAAEgoAAAAAAAHDv8O/w7/DvygXAAAQECjDvwAACAAAAgAAAAAAAAHDv8O/w7/Dv2fDmw=="}}
+//statbytes:
+0,0,-61,-78,-62,-104,-62,-88,-61,-65,0,0,0,0,0,18,10,0,0,0,0,0,1,-61,-65,-61,-65,-61,-65,-61,-65,40,23,0,0,16,16,40,-61,-65,0,0,8,0,0,2,0,0,0,0,0,0,1,-61,-65,-61,-65,-61,-65,-61,-65,103,-61,-101
+//endstatbytes
+//endowndata
+
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 549
+
+{"command":"setAirconStat","apiVer":"1.0","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","deviceId":"e559fbf1879aaf4c","timestamp":1674317168,"result":0,"contents":{"airconId":"ec0bae9f2d1d","airconStat":"AACymKf/AAAAAAASCgAAAAAAAf////9/poAEEBAnjQAAiAAAAgAAAAAAAAOAIIz/gBBc/5QQDgAJog==","logStat":0,"updatedBy":"local","expires":1674317228,"ledStat":1,"autoHeating":0,"highTemp":"AB","lowTemp":"66","firmType":"WF-RAC","wireless":{"firmVer":"010"},"mcu":{"firmVer":"123"},"timezone":"Europe/Berlin","remoteList":["","","",""],"numOfAccount":2}}
+
+
+new::
+
+POST /beaver/command/getAirconStat HTTP/1.1
+Connection: close
+Content-Type: application/json; charset=utf-8
+Content-Length: 186
+Host: 192.168.178.62:51443
+Accept-Encoding: gzip
+User-Agent: okhttp/4.9.1
+
+{"apiVer":"1.0","command":"getAirconStat","contents":{"airconId":"ec0bae9f2d1d"},"deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317176}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 549
+
+{"command":"getAirconStat","apiVer":"1.0","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","deviceId":"e559fbf1879aaf4c","timestamp":1674317176,"result":0,"contents":{"airconId":"ec0bae9f2d1d","airconStat":"AACymKf/AAAAAAASCgAAAAAAAf////9/poAEEBAnjAAAiAAAAgAAAAAAAAOAIIz/gBBc/5QQDgAKlQ==","logStat":0,"updatedBy":"local","expires":1674317228,"ledStat":1,"autoHeating":0,"highTemp":"AB","lowTemp":"66","firmType":"WF-RAC","wireless":{"firmVer":"010"},"mcu":{"firmVer":"123"},"timezone":"Europe/Berlin","remoteList":["","","",""],"numOfAccount":2}}
+
+
+new::
+
+POST /beaver/command/getDeviceInfo HTTP/1.1
+Connection: close
+Content-Type: application/json; charset=utf-8
+Content-Length: 147
+Host: 192.168.178.62:51443
+Accept-Encoding: gzip
+User-Agent: okhttp/4.9.1
+
+{"apiVer":"1.0","command":"getDeviceInfo","deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317260}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 237
+
+{"command":"getDeviceInfo","apiVer":"1.0","deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317260,"result":0,"contents": {"airconId":"ec0bae9f2d1d","macAddress":"ec0bae9f2d1d","apMode":0}}
+
+
+new::
+
+POST /beaver/command/getAirconStat HTTP/1.1
+Connection: close
+Content-Type: application/json; charset=utf-8
+Content-Length: 186
+Host: 192.168.178.62:51443
+Accept-Encoding: gzip
+User-Agent: okhttp/4.9.1
+
+{"apiVer":"1.0","command":"getAirconStat","contents":{"airconId":"ec0bae9f2d1d"},"deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317261}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 549
+
+{"command":"getAirconStat","apiVer":"1.0","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","deviceId":"e559fbf1879aaf4c","timestamp":1674317261,"result":0,"contents":{"airconId":"ec0bae9f2d1d","airconStat":"AACymKf/AAAAAAASCgAAAAAAAf////9/poAEEBAnjQAAiAAAAgAAAAAAAAOAII3/gBBb/5QQDgD3tA==","logStat":0,"updatedBy":"local","expires":1674317228,"ledStat":1,"autoHeating":0,"highTemp":"AB","lowTemp":"66","firmType":"WF-RAC","wireless":{"firmVer":"010"},"mcu":{"firmVer":"123"},"timezone":"Europe/Berlin","remoteList":["","","",""],"numOfAccount":2}}
+
+
+new::
+
+POST /beaver/command/getDeviceInfo HTTP/1.1
+Connection: close
+Content-Type: application/json; charset=utf-8
+Content-Length: 147
+Host: 192.168.178.62:51443
+Accept-Encoding: gzip
+User-Agent: okhttp/4.9.1
+
+{"apiVer":"1.0","command":"getDeviceInfo","deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317286}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 237
+
+{"command":"getDeviceInfo","apiVer":"1.0","deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317286,"result":0,"contents": {"airconId":"ec0bae9f2d1d","macAddress":"ec0bae9f2d1d","apMode":0}}
+
+
+new::
+
+POST /beaver/command/getAirconStat HTTP/1.1
+Connection: close
+Content-Type: application/json; charset=utf-8
+Content-Length: 186
+Host: 192.168.178.62:51443
+Accept-Encoding: gzip
+User-Agent: okhttp/4.9.1
+
+{"apiVer":"1.0","command":"getAirconStat","contents":{"airconId":"ec0bae9f2d1d"},"deviceId":"e559fbf1879aaf4c","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","timestamp":1674317291}HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Content-Length: 549
+
+{"command":"getAirconStat","apiVer":"1.0","operatorId":"9d005f5f-de8c-408e-b81a-99107a189c30","deviceId":"e559fbf1879aaf4c","timestamp":1674317291,"result":0,"contents":{"airconId":"ec0bae9f2d1d","airconStat":"AACymKf/AAAAAAASCgAAAAAAAf////9/poAEEBAnjQAAiAAAAgAAAAAAAAOAII3/gBBb/5QQDgD3tA==","logStat":0,"updatedBy":"local","expires":1674317228,"ledStat":1,"autoHeating":0,"highTemp":"AB","lowTemp":"66","firmType":"WF-RAC","wireless":{"firmVer":"010"},"mcu":{"firmVer":"123"},"timezone":"Europe/Berlin","remoteList":["","","",""],"numOfAccount":2}}

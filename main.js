@@ -83,10 +83,14 @@ class WosoMitsuAirconRac extends utils.Adapter {
 
         // The adapters config (in the instance object everything under the attribute "native") is accessible via
         // this.config:
-        this.log.info("woso::config ip: " + this.config.ip);
-        this.log.info("woso::config timer: " + this.config.timer);
+        //this.log.info("woso::config ip: " + this.config.ip);
+        //this.log.info("woso::config timer: " + this.config.timer);
 
         this.acCoder.setLogger(this.log);
+
+        //const horig="AACymKf/AAAAAAASCgAAAAAAAf////9/pgAAEBAn/wAAAAAAAgAAAAAAAAH/////A1Y=";
+        //const hown="AADDssKYwqjDvwAAAAAAEgoAAAAAAAHDv8O/w7/DvygXAAAQECjDvwAACAAAAgAAAAAAAAHDv8O/w7/Dv2fDmw==";
+        //this.acCoder.check_setAircon(horig, hown);
 
         await this.initIOBStates();
 
@@ -232,10 +236,10 @@ class WosoMitsuAirconRac extends utils.Adapter {
                 write: true,
                 "states": {
                     0: "Auto",
-                    1: "Kühlen",
-                    2: "Heizen",
-                    3: "Lüften",
-                    4: "Entfeuchten"
+                    1: "Cool",
+                    2: "Hot",
+                    3: "Send Air",
+                    4: "Dry"
                 }
             },
             native: {},
@@ -644,7 +648,7 @@ class WosoMitsuAirconRac extends utils.Adapter {
         if (state) {
             // The state was changed
             if (state.ack === false) {
-                this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+                //this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
                 this.setStateVal(id, state.val);
             }
         } else {
@@ -696,7 +700,7 @@ class WosoMitsuAirconRac extends utils.Adapter {
         ret.response="";
         ret.body="";
         try {
-            this.log.info("data: "+cmd+"::"+JSON.stringify(data));
+            //this.log.info("data: "+cmd+"::"+JSON.stringify(data));
             const response = await axios.post(url, data, {
                 headers: {
                     "Connection": "close",
@@ -706,7 +710,7 @@ class WosoMitsuAirconRac extends utils.Adapter {
                 }});
             ret.response = response.data;
             this.lastResponse = ret.response;
-            this.log.info("return: "+cmd+"::"+JSON.stringify(ret.response));
+            //this.log.info("return: "+cmd+"::"+JSON.stringify(ret.response));
             //log("RESULT:"+JSON.stringify(response.data));
             //console.log(util.inspect(response.data, { showHidden: false, depth: null }));
         } catch (error) {
