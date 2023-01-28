@@ -175,6 +175,10 @@ class WosoMitsuAirconRac extends utils.Adapter {
                 this.AirconStat.windDirectionUD = val;
                 valchange++;
                 break;
+            case "Entrust" :
+                this.AirconStat.entrust = val;
+                valchange++;
+                break;
         }
         if (valchange > 0) {
             await this.sendDataToMitsu();
@@ -412,11 +416,11 @@ class WosoMitsuAirconRac extends utils.Adapter {
                 type: "boolean",
                 role: "indicator",
                 read: true,
-                write: false,
+                write: true,
             },
             native: {},
         });
-        //this.subscribeStates("Entrust");
+        this.subscribeStates("Entrust");
 
         await this.setObjectNotExistsAsync("Error-Code", {
             type: "state",
@@ -586,6 +590,7 @@ class WosoMitsuAirconRac extends utils.Adapter {
             native: {},
         });
         //this.subscribeStates("Auto-Heating");
+
     }
 
     startTimer() {

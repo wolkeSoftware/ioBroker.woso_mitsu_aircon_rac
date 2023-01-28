@@ -140,7 +140,7 @@ User-Agent: okhttp/4.9.1
 	0,0,-78,-104,-89,-1,0,0,0,0,0,18,10,0,0,0,0,0,1,-1,-1,-1,-1,127,-90,0,0,16,16,39,-1,0,0,0,0,0,2,0,0,0,0,0,0,1,-1,-1,-1,-1,3,86
 //endstatbytes
 //owndata::
-{"apiVer":"1.0","command":"setAirconStat","deviceId":"18547566-315b-4941-bb9b-90cedef4bbb7","operatorId":"d2bc4571-1cea-4858-b0f2-34c18bef1901","timestamp":1674318374,"contents":{"airconId":"ec0bae9f2d1d","airconStat":"AADDssKYwqjDvwAAAAAAEgoAAAAAAAHDv8O/w7/DvygXAAAQECjDvwAACAAAAgAAAAAAAAHDv8O/w7/Dv2fDmw=="}}
+{"apiVer":"1.0","command":"setAirconStat","deviceId":"18547566-315b-4941-bb9b-90cedef4bbb7","operatorId":"d2bc4571-1cea-4858-b0f2-34c18bef1901","timestamp":1674318374,"contents":{"airconId":"ec0bae9f2d1d","airconStat":"AADDssKYwqjDvwAAAAAAEgoAAAAAAAHDv8O/w7/DvygXAAAQECjDvwAACAAAAgAAAAAAAAHDv8O/w7/Dv2fDmw=="}}						  
 //statbytes:
 0,0,-61,-78,-62,-104,-62,-88,-61,-65,0,0,0,0,0,18,10,0,0,0,0,0,1,-61,-65,-61,-65,-61,-65,-61,-65,40,23,0,0,16,16,40,-61,-65,0,0,8,0,0,2,0,0,0,0,0,0,1,-61,-65,-61,-65,-61,-65,-61,-65,103,-61,-101
 //endstatbytes

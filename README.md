@@ -105,6 +105,9 @@ Please refer to the [`dev-server` documentation](https://github.com/ioBroker/dev
 
 ## Changelog
 
+### 1.0.2
+* made Entrust (3D Auto) changeable
+
 ### 1.0.1
 * (wolkeSoftware) initial release
 
